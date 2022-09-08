@@ -1,4 +1,3 @@
-/*
 // Answer 1
 var firstName = prompt('Enter First Name');
 var lastName = prompt('Enter Last Name');
@@ -114,6 +113,82 @@ university = university.split('');
 for (let i = 0; i < university.length; i++) {
     document.write(university[i] +"<br>");
 }
-*/
+
 // Answer 17
 var userInput = prompt('Enter any string');
+var lastChar = userInput.charAt(userInput.length-1);
+document.write('<p>User Input: ' + userInput + '</p>');
+document.write('Last Character of Input: ' + lastChar + '</p>');
+
+// Answer 18
+var string = 'The quick brown fox jumps over the lazy dog';
+document.write('<p>Text: '+string+'</p>');
+string = string.toLowerCase();
+var count = string.match(/the/g).length;
+document.write('<p>There are '+count+' occurence(s) of word "the"</p>');
+
+// Chapter 26 - 30 Answers
+
+// Answer 1
+var number = +prompt('Enter a positive integer');
+var roundOff = Math.round(number);
+var floor = Math.floor(number);
+var ceil = Math.ceil(number);
+document.write('<p>Number: '+number+'</p>');
+document.write('<p>Round off Value: '+roundOff+'</p>');
+document.write('<p>Floot Value: '+floor+'</p>');
+document.write('<p>Ceil Value: '+ceil+'</p>');
+
+// Answer 2
+var number = +prompt('Enter a negative integer');
+var roundOff = Math.round(number);
+var floor = Math.floor(number);
+var ceil = Math.ceil(number);
+document.write('<p>Number: '+number+'</p>');
+document.write('<p>Round off Value: '+roundOff+'</p>');
+document.write('<p>Floot Value: '+floor+'</p>');
+document.write('<p>Ceil Value: '+ceil+'</p>');
+
+// Answer 3
+var input = +prompt('Enter any number to find it\'s absolute value');
+document.write('The absolute value of '+input+' is '+ Math.abs(input));
+
+// Answer 4
+var random = Math.floor(Math.random()*7);
+document.write('<p>Random Dice Value: '+random+'</p>')
+
+// Answer 5
+var random = Math.floor(Math.random()*2);
+document.write('<p>'+random+'</p>');
+var call;
+if(random){
+    call = 'Tails';
+}else{
+    call = 'Heads';
+}
+document.write('<p>Random Coin Value: ' + call);
+
+// Answer 6
+var rand = Math.floor(Math.random()*100);
+document.write('<p>Random Number Between 1 and 100: '+rand+'</p>')
+
+// Answer 7
+var weight = prompt('Enter your weight in KG');
+weight = weight.replace(/kgs|kilograms/g,'');
+document.write('<p>The weight of the user is '+weight+' kilograms</p>')
+
+// Answer 8
+var matched = 0;
+do{
+    if(matched == false){
+        var rand = Math.floor(Math.random()*10);
+        var userGuess = +prompt('Enter any number from 1-10');
+        console.log(rand);
+    }
+    if(rand == userGuess){
+        document.write('Congratulations');
+        matched = 1;
+    }else{
+        alert('Try Again');
+    }
+}while(matched != true)
