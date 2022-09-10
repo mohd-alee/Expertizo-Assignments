@@ -1,4 +1,3 @@
-/*
 // Answer 1
 function power(a,b){
     return a ** b
@@ -78,13 +77,111 @@ indexof('Hello World', 'w');
 
 // Answer 6
 function deleteVowels(string){
-    for (let i = 0; i < string.length; i++) {
-        if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u'){
-            string.splice(i, 1);
-        }        
+    // Solution Copied from the internet
+        var stringWOVowels = string.replace(/[aeiou]/gi,'')
+    // Below is my solution which detects the vowels but returning error on splice
+    // for (let i = 0; i < string.length; i++) {
+        // if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u'){
+            // string.splice(i, 1);
+        // }
+    // }
+    console.log(stringWOVowels);
+}
+deleteVowels('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,')
+
+// Answer 7
+function countVowels(param){
+    var count = 0
+    var words = param.toLowerCase()
+    for (let i = 0; i < words.length; i++) {
+        var firstFlag = 0;
+        var char = words.charAt([i]);
+        var nextChar = words.charAt([i+1]);
+        switch (char) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+                firstFlag = 1;
+            default:
+                break;
+        }
+        if(firstFlag){
+            switch (nextChar) {
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    count++;
+                default:
+                    break;
+            }
+        }
     }
-    console.log(string);
+    
+    console.log(count);
+}
+countVowels('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,')
+
+// Answer 8
+var distance = +prompt('Enter Distance between two cities in KM only');
+function calcDistanceinMeters(param){
+    var DIM = param*1000;
+    console.log(DIM + ' Meters');
+}
+function calcDistanceinFeets(param){
+    var DIF = param*3280.839895;
+    console.log(DIF + ' Feets');
+}
+function calcDistanceinInches(param){
+    var DII = param*39370.07874;
+    console.log(DII + ' Inches');
+}
+function calcDistanceinCMs(param){
+    var DICM = param*100000;
+    console.log(DICM + ' Centimeters');
 }
 
-deleteVowels('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,')
-*/
+calcDistanceinMeters(distance);
+calcDistanceinFeets(distance);
+calcDistanceinInches(distance);
+calcDistanceinCMs(distance);
+
+// Answer 9
+function calcOT(){
+    var OT = Math.floor(+prompt('No. of hours of every time in a week'));
+    var extraPay = OT*12;
+    console.log('Extra pay for overtime: Rs.' + extraPay);
+}
+calcOT();
+
+// Answer 10
+function cashHandler(){
+    // debugger;
+    var hundredNotes,fiftyNotes,TenNotes,OneRsCoin;
+    hundredNotes = fiftyNotes = TenNotes = OneRsCoin = 0;
+    var amount = +prompt('Enter Amount to Withdraw');
+    do {
+        // Returning 100 Notes first;
+        while(amount > 99){
+            amount = amount - 100;
+            hundredNotes++;
+        }
+        while(amount >= 50){
+            amount = amount - 50;
+            fiftyNotes++;
+        }
+        while(amount >= 10){
+            amount = amount - 10;
+            TenNotes++;
+        }
+        while(amount >= 1){
+            amount = amount - 1;
+            OneRsCoin++;
+        }
+    } while (amount);
+    document.write('You will have '+ hundredNotes + ' hundreds notes, ' + fiftyNotes + ' fifty notes, ' + TenNotes + ' ten notes and ' + OneRsCoin + ' One Rs Coins');
+}
+cashHandler();
