@@ -4,8 +4,137 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4 | Chapters 43 - 48</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        .item img{
+            box-shadow: 0px 0px 6px 3px #cecece;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+        .item img:hover{
+            border-radius: 12px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="row my-5">    
+            <!-- Answer 1 -->
+            <a href="#" class="btn btn-primary mb-5" onclick="alertBox()">Mujhe dabayen</a>
+            
+            <!-- Answer 2 -->
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://globalcomputers.pk/wp-content/uploads/2022/08/nothing-phone-1-phonedroid.com_.pk_-1-500x500-1.jpeg" class="img-fluid" alt="Phone" onclick="thankYouMsg()">
+                    <h4 class="text-center mt-2">Nothing 1</h4>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://globalcomputers.pk/wp-content/uploads/2022/08/nothing-phone-1-phonedroid.com_.pk_-1-500x500-1.jpeg" class="img-fluid" alt="Phone" onclick="thankYouMsg()">
+                    <h4 class="text-center mt-2">Nothing 1</h4>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://globalcomputers.pk/wp-content/uploads/2022/08/nothing-phone-1-phonedroid.com_.pk_-1-500x500-1.jpeg" class="img-fluid" alt="Phone" onclick="thankYouMsg()">
+                    <h4 class="text-center mt-2">Nothing 1</h4>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="item">
+                    <img src="https://globalcomputers.pk/wp-content/uploads/2022/08/nothing-phone-1-phonedroid.com_.pk_-1-500x500-1.jpeg" class="img-fluid" alt="Phone" onclick="thankYouMsg()">
+                    <h4 class="text-center mt-2">Nothing 1</h4>
+                </div>
+            </div>
+
+            <!-- Answer 3 -->
+            <table class="mt-5 table table-striped table-hover">
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>Student 01</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Student 02</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Student 03</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Student 04</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Student 05</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Student 06</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>07</td>
+                        <td>Student 07</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>08</td>
+                        <td>Student 08</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>09</td>
+                        <td>Student 09</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Student 10</td>
+                        <td>Expertizo</td>
+                        <td><button class="btn btn-danger" onclick="suspendStudent(this)">Suspend</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Answer 4 -->
+            <div class="offset-3 col-6 mt-5">
+                <img src="https://cdn.motor1.com/images/mgl/6ZpqJk/s1/ford-mustang-electric-by-charge-cars.jpg" class="img-fluid" onmouseenter="showReality()" onmouseleave="showDreams()" id="img-holder">
+                <h4 class="text-center mt-2" id="text-holder">Khuwahishaat</h4>
+            </div>
+        
+            <!-- Answer 5 -->
+            <h1 class="text-center" id="counter">0</h1>
+            <hr>
+            <div class="d-flex justify-content-center ">
+                <button type="button" onclick="counter(this)" value="increment" class="btn btn-success me-4">Increase</button>
+                <button type="button" onclick="counter(this)" value="decrement" class="btn btn-danger">Decrease</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="app.js"></script>
 </html>
