@@ -1,16 +1,18 @@
+body a,body a:hover { text-decoration: none; color: initial; }
 #loginSignupModalbtn { position: relative; border: none; background-color: transparent; }
 #loginSignupModalbtn:active { border: none !important; }
 ._1075545d  { position: absolute; top: 25%; left: 50%; transform: translate(-50%); font-weight: 700; }
 .heading { font-size: 24px; color: #002f34; margin-bottom: 0.8rem; font-weight: 400; }
-.img-wrap { height: 150px; overflow: hidden; text-align: center; background-color: #222; }
+.img-wrap { overflow: hidden; text-align: center; background-color: #222; }
+.home .img-wrap { height: 150px; }
 .img-wrap img { height: 100%; transition: 0.3s all; }
-.img-wrap:hover img { transform: scale(1.2); }
+.home .img-wrap:hover img { transform: scale(1.2); }
 .content-wrap { padding: 10px; border: 0.1rem solid rgba(0,47,52,.2); border-radius: 4px; }
 .content-wrap .prod-title { font-size: 16px; line-height: 24px; margin-bottom: 8px; }
 .content-wrap .prod-price { font-size: 24px; font-weight: 500; margin-bottom: 20px; }
 .content-wrap .prod-location { font-size: 14px; color: #858585; margin-bottom: 0; }
 .modal-body .welcome-note { margin: 25px 0; }
-:is(#modal-page-1, #modal-page-2, #modal-page-3) button {
+.modal-body button {
     border-radius: 25px;
     background: #fff;
     border: 2px solid #003035;
@@ -19,8 +21,14 @@
     font-size: 16px;
     transition: 0.3s ease;
 }
-:is(#modal-page-1, #modal-page-2, #modal-page-3) button:hover {
+.modal-body button:hover {
     color: #fff;
-    background-color: #003035;
+    background-color: #003035 !important;
+    border-color: #003035 !important;
     box-shadow: 0px 5px 5px 0px #cecece;
+}
+.prod-details {
+    padding: 15px;
+    border: 1px solid rgba(0,47,52,.36);
+    border-radius: 4px;
 }

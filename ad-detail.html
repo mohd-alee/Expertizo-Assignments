@@ -1,3 +1,6 @@
+<script>
+    if(!sessionStorage.getItem('ad-id')){ location.href = './index.html'}
+</script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +16,7 @@
 <header>
     <nav class="navbar bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="index.html">
             <img src="images/OLX-logo.svg" alt="Bootstrap" width="62" >
           </a>
           <span class="navbar-text">
@@ -28,18 +31,41 @@
         </div>
       </nav>
 </header>
-<body class="home">
-    <section class="my-4 pt-4">
-        <div class="container">
-            <div class="row">
-                <div class="col"><h2 class="heading">Posted Ads</h2></div>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-8 mb-4">
+                <div class="img-wrap">
+                    <img src="" alt="" class="img-fluid" id="prod_image">
+                </div>
             </div>
-            <div class="row" id="ads-loop">
+            <div class="col-4">
+                <div class="prod-details">
+                    <h4 id="prod_price"></h4>
+                    <p id="prod_name"></p>
+                    <p id="prod_location" class="mb-0"></p>
+                </div>
+            </div>
+            <div class="col-8">
+                <hr>
+                <h4 style="font-weight: 600;">Description</h4>
+                <p id="prod_desc"></p>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 <footer>
+    <script>
+        var current_ad = sessionStorage.getItem('ad-id');
+        var current_ad_details = JSON.parse(localStorage.getItem('all-ads'));
+        console.log(current_ad_details[current_ad]);
+        document.getElementById('prod_image').src = current_ad_details[current_ad].product_images[0];
+        document.getElementById('prod_image').alt = current_ad_details[current_ad].product_title;
+        document.getElementById('prod_price').innerText = 'RS ' + current_ad_details[current_ad].product_price.toLocaleString();
+        document.getElementById('prod_name').innerText = current_ad_details[current_ad].product_title;
+        document.getElementById('prod_location').innerText = current_ad_details[current_ad].product_location;
+        document.getElementById('prod_desc').innerText = current_ad_details[current_ad].product_description;
+    </script>
     <!-- Login/Signup Modal -->
     <div class="modal fade" id="loginSignupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -119,10 +145,10 @@
                                 <input type="text" class="form-control mb-3" id="p_name" placeholder="Product Name">
                             </div>
                             <div class="col-12">
-                                <textarea name="" id="p_desc" rows="5" class="form-control mb-3" placeholder="Product Details"></textarea>
+                                <input type="text" class="form-control mb-3" id="p_desc" placeholder="Product Details">
                             </div>
                             <div class="col-12">
-                                <input type="text" pattern="[0-9.]+" class="form-control mb-3" id="p_price" placeholder="Product Price ( e.g. 15000 )">
+                                <input type="text" pattern="[0-9.]+" class="form-control mb-3" id="p_price" placeholder="Product Price (Accepts Numbers Only)">
                             </div>
                             <div class="col-12">
                                 <input type="text" class="form-control mb-3" id="p_image_url" placeholder="Product Image">

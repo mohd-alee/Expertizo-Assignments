@@ -1,61 +1,69 @@
-// Initializing Application with dummy Ads
-var adsObject = [
-    {
-        'index': 0,
-        'product_title': 'iPhone XS',
-        'product_price': 85000,
-        'product_location': 'Clifton, Karachi',
-        'product_images': new Array(
-            'https://images.olx.com.pk/thumbnails/289199891-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/289199892-800x600.webp',
-            'https://images.olx.com.pk/thumbnails/289199893-400x300.webp',
-        )
-    },
-    {
-        'index': 1,
-        'product_title': 'Honda Accord CL9 - 2003',
-        'product_price': 1699000,
-        'product_location': 'Gulberg, Lahore',
-        'product_images': new Array(
-            'https://images.olx.com.pk/thumbnails/289153731-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/289153732-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/289153733-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/289153734-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/289153735-400x300.webp',
-        )
-    },
-    {
-        'index': 2,
-        'product_title': 'YAMAHA R6 2011',
-        'product_price': 1530000,
-        'product_location': 'PECHS, Karachi',
-        'product_images': new Array(
-            'https://images.olx.com.pk/thumbnails/268684139-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/285671446-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/285671548-800x600.webp',
-            'https://images.olx.com.pk/thumbnails/268684140-400x300.webp',
-        )
-    },
-    {
-        'index': 3,
-        'product_title': '10 Marla House',
-        'product_price': 25900000,
-        'product_location': 'Central Park Housing Scheme, Lahore',
-        'product_images': new Array(
-            'https://images.olx.com.pk/thumbnails/273493115-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/273493116-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/273493122-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/273493124-400x300.webp',
-            'https://images.olx.com.pk/thumbnails/273493125-400x300.webp',
-        )
-    }
-];
-var ads_section = document.getElementById('ads-loop');
-var html = '';
-for (key in adsObject) {
-    html += '<div class="col-3 single-ad"><div class="img-wrap"><img src="'+adsObject[key].product_images[0]+'" alt="'+adsObject[key].product_title+'" class="img-fluid"></div><div class="content-wrap"><p class="prod-title">'+adsObject[key].product_title+'</p><h4 class="prod-price">RS '+adsObject[key].product_price.toLocaleString()+'</h4><p class="prod-location">'+adsObject[key].product_location+'</p></div></div>';
+// Initializing Application with dummy 
+var allAds;
+if(localStorage.getItem('all-ads')){
+    allAds = JSON.parse(localStorage.getItem('all-ads'));
+}else{
+    allAds = [
+        {
+            'product_title': 'iPhone XS',
+            'product_description': 'Lorem Ipsum Dolar Sit Amet',
+            'product_price': 85000,
+            'product_location': 'Clifton, Karachi',
+            'product_images': [
+                'https://images.olx.com.pk/thumbnails/289199891-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/289199892-800x600.webp',
+                'https://images.olx.com.pk/thumbnails/289199893-400x300.webp',
+            ]
+        },
+        {
+            'product_title': 'Honda Accord CL9 - 2003',
+            'product_description': 'Lorem Ipsum Dolar Sit Amet',
+            'product_price': 1699000,
+            'product_location': 'Gulberg, Lahore',
+            'product_images': [
+                'https://images.olx.com.pk/thumbnails/289153731-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/289153732-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/289153733-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/289153734-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/289153735-400x300.webp',
+            ]
+        },
+        {
+            'product_title': 'YAMAHA R6 2011',
+            'product_description': 'Lorem Ipsum Dolar Sit Amet',
+            'product_price': 1530000,
+            'product_location': 'PECHS, Karachi',
+            'product_images': [
+                'https://images.olx.com.pk/thumbnails/268684139-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/285671446-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/285671548-800x600.webp',
+                'https://images.olx.com.pk/thumbnails/268684140-400x300.webp',
+            ]
+        },
+        {
+            'product_title': '10 Marla House',
+            'product_description': 'Lorem Ipsum Dolar Sit Amet',
+            'product_price': 25900000,
+            'product_location': 'Central Park Housing Scheme, Lahore',
+            'product_images': [
+                'https://images.olx.com.pk/thumbnails/273493115-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/273493116-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/273493122-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/273493124-400x300.webp',
+                'https://images.olx.com.pk/thumbnails/273493125-400x300.webp',
+            ]
+        }
+    ];
+    localStorage.setItem('all-ads' , JSON.stringify(allAds));
 }
-ads_section.innerHTML = html;
+if(document.body.classList.contains('home')){
+    var ads_section = document.getElementById('ads-loop');
+    var html = '';
+    for(key in allAds) {
+        html += '<div class="col-3 single-ad mb-3"><a href="javascript:void(0)" onclick="showAd_detail('+key+')"><div class="img-wrap"><img src="'+allAds[key].product_images[0]+'" alt="'+allAds[key].product_title+'" class="img-fluid"></div><div class="content-wrap"><p class="prod-title">'+allAds[key].product_title+'</p><h4 class="prod-price">RS '+allAds[key].product_price.toLocaleString()+'</h4><p class="prod-location">'+allAds[key].product_location+'</p></div></a></div>';
+    }
+    ads_section.innerHTML = html;
+}
 
 // Function to change the body of modal
 function showModalFront(){
@@ -76,8 +84,8 @@ function showSignupForm(){
 
 // Button behaviour based on user status
 function checkUserStatus(){
-    if(localStorage.getItem('isLoggedIn') == 1){
-        window.location.href = '/post-ad.html'
+    if(sessionStorage.getItem('isLoggedIn') == 1){
+        $('#postAd').modal('show')
     }else{
         $('#loginSignupModal').modal('show')
     }
@@ -104,10 +112,10 @@ function registerUser(){
             showNotification('Please Enter a Valid Email to Register!','error');
             return;
         }
-        localStorage.setItem('name', name);
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
-        localStorage.setItem('isLoggedIn', 0);
+        sessionStorage.setItem('name', name);
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('password', password);
+        sessionStorage.setItem('isLoggedIn', 0);
         showNotification('Registration Successful, You Can Login Now','success');
         showModalFront();
 
@@ -140,14 +148,14 @@ function showNotification(message, type){
 function loginUser(){
     var email = document.getElementById('login_email').value;
     var password = document.getElementById('login_password').value;
-    var storedEmail = localStorage.getItem('email');
-    var storedPassword = localStorage.getItem('password');
+    var storedEmail = sessionStorage.getItem('email');
+    var storedPassword = sessionStorage.getItem('password');
     if(!ValidateEmail(email)){
         showNotification('Please Enter a Valid Email to signup!','error');
         return;
     }
     if(email === storedEmail && password === storedPassword){
-        localStorage.setItem('isLoggedIn', 1);
+        sessionStorage.setItem('isLoggedIn', 1);
         showNotification('Login Successful','success');
         setTimeout(function(){
             window.location.href = window.location.href;
@@ -155,4 +163,38 @@ function loginUser(){
     }else{
         showNotification('Invalid Credentials.','error');
     }
+}
+
+// Posting Ad
+function postAd(){
+    var prod_name = document.getElementById('p_name').value;
+    var prod_price = +document.getElementById('p_price').value;
+    var prod_location = document.getElementById('p_location').value;
+    var prod_image = document.getElementById('p_image_url').value;
+    var prod_desc = document.getElementById('p_desc').value;
+    if(prod_name !== '' && prod_price !== '' && prod_location !== '' && prod_image !== '' && prod_desc !== ''){
+        var newad = {
+            'product_title': prod_name,
+            'product_description': prod_desc,
+            'product_price': prod_price,
+            'product_location': prod_location,
+            'product_images': [
+                prod_image
+            ]
+        };
+        allAds.push(newad);
+        localStorage.setItem('all-ads' , JSON.stringify(allAds));
+        showNotification('Ad Published','success');
+        setTimeout(function(){
+            window.location.href = window.location.href;
+        },3000);
+    }else{
+        showNotification('Please Enter Complete Details.', 'error');
+    }
+}
+
+// Display Detail Page
+function showAd_detail(id) {
+    sessionStorage.setItem("ad-id", id);
+    window.location.href = "ad-detail.html";
 }
